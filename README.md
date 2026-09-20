@@ -125,8 +125,8 @@ export AMAZON_COACH_DIR=/path/to/amazon-coach/data
 ### 检查依赖状态
 
 ```bash
-python scripts/_config.py      # 打印当前解析结果
-python scripts/dep_check.py    # 检查卡片是否过期
+python scripts/state.py roots     # 打印所有生效路径及其来源（配置排查第一入口）
+python scripts/dep_check.py       # 检查卡片是否过期
 ```
 
 ⚠️ **卡片过期后必须联网复核官方口径再引用** —— 否则会静默使用旧费率
@@ -169,7 +169,7 @@ amazon-ops-orchestrator/
 | 脚本 | 作用 |
 |---|---|
 | `_config.py` | 统一配置解析（三级回退，解决路径硬编码） |
-| `state.py` | 项目状态管理 CLI |
+| `state.py` | 项目状态管理 CLI（含 `roots` 路径自检） |
 | `fetch_listing.py` | 抓取 listing 字段（强制存档原始页面） |
 | `fetch_reviews.py` | 提取评论维度数据 |
 | `fetch_suggestions.py` | 关键词扩展（搜索下拉建议） |

@@ -73,8 +73,8 @@
 | `scripts/semantic_check.py` | 数值语义校验 + 假设追踪（对应 ROADMAP 的 P0-1、P0-3） |
 | `scripts/report_check.py` | 报告与数据结构一致性检查（P0-2） |
 | `scripts/dep_check.py` | 外部依赖（费率卡）时效检查（P1-6） |
-| `GETTING-STARTED.md` | 起步指引（P2-8） |
-| `ROADMAP.md` | 成熟度评估与改进路线图 |
+| `docs/getting-started.md` | 起步指引（P2-8） |
+| `docs/roadmap.md` | 成熟度评估与改进路线图 |
 
 ### 修复
 
@@ -103,7 +103,7 @@
    56 项检查全过，却没抓到币种错误，因为所有环节用的是同一个错数字。
    **一致性检查发现不了「共同的错误前提」。**
 
-3. **未完成的优化项**：见 `ROADMAP.md` 的 P1-4（脚本测试）、P2-7（项目模板）、P2-9（批量处理）。
+3. **未完成的优化项**：见 `docs/roadmap.md` 的 P1-4（脚本测试）、P2-7（项目模板）、P2-9（批量处理）。
 
 ---
 
