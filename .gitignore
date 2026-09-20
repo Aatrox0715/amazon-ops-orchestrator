@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+
+# 个人配置（含本机路径，不入库）
+skill.config.json
+
+# 项目产出物（分析结果不入库，技能本身才是分发的对象）
+projects/
+portfolio/
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# 临时与日志
+*.log
+*.tmp
+~$*
+_browser-profile/

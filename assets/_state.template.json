@@ -1,0 +1,26 @@
+{
+  "project": "<产品代号>",
+  "product_name": "",
+  "target_marketplace": "US",
+  "created_at": "",
+  "updated_at": "",
+  "data_source_level": "L2",
+  "available_sources": [],
+  "current_stage": "01",
+  "stages": {
+    "01": { "name": "类目与市场调研", "gate": "P2", "status": "pending", "output": null, "completed_at": null },
+    "02": { "name": "竞品拆解",       "gate": "P2", "status": "pending", "output": null, "completed_at": null },
+    "03": { "name": "评论与VOC分析",  "gate": "P2", "status": "pending", "output": null, "completed_at": null },
+    "04": { "name": "关键词库搭建",   "gate": "P1", "status": "pending", "output": null, "completed_at": null },
+    "05": { "name": "定价与利润测算", "gate": "P1", "status": "pending", "output": null, "completed_at": null },
+    "06": { "name": "Listing文案编写","gate": "P1", "status": "pending", "output": null, "completed_at": null },
+    "07": { "name": "视觉素材规划",   "gate": "P1", "status": "pending", "output": null, "completed_at": null },
+    "08": { "name": "合规与质量体检", "gate": "P1", "status": "pending", "output": null, "completed_at": null },
+    "09": { "name": "广告架构规划",   "gate": "P1", "status": "pending", "output": null, "completed_at": null },
+    "10": { "name": "复盘与迭代",     "gate": "P2", "status": "pending", "output": null, "completed_at": null }
+  },
+  "confirmed_by_user": [],
+  "missing_fields": [],
+  "revision_history": [],
+  "notes": ""
+}

@@ -1,0 +1,29 @@
+{
+  "stage": "<01>",
+  "stage_name": "<环节名>",
+  "project": "<产品代号>",
+  "generated_at": "<ISO8601>",
+  "data_source_level": "<L1|L2|L3>",
+  "sources": [
+    {
+      "field": "<字段名>",
+      "level": "<L1|L2|L3>",
+      "origin": "<数据怎么来的>",
+      "source_grade": "<S1-S7>",
+      "verified_at": "<YYYY-MM>"
+    }
+  ],
+  "missing_fields": [
+    {
+      "field": "<字段名>",
+      "level": "L3",
+      "reason": "<为什么拿不到>",
+      "degraded_to": "<改用什么方法替代>",
+      "note": "<使用限制>"
+    }
+  ],
+  "confirmed_by_user": [
+    { "decision": "<用户拍了什么板>", "at": "<ISO8601>" }
+  ],
+  "payload": {}
+}

@@ -1,0 +1,17 @@
+# 统一换行符，避免跨平台差异
+* text=auto eol=lf
+
+# Windows 专用脚本保持 CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# 二进制文件不做换行转换
+*.xlsx binary
+*.xls binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.zip binary
+
+# 由脚本生成的文件，不参与语言统计
+data/min-cards.json linguist-generated=true

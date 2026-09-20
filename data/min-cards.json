@@ -1,0 +1,230 @@
+{
+  "version": "1.0",
+  "purpose": "本技能自带的最小卡片集 —— 供未配置外部 amazon-coach 时使用，保证开箱可跑",
+  "source_note": "抽取自 amazon-coach 的 flashcards.json（141 张中的 20 张必需卡）",
+  "source_version": "1.0",
+  "generated_at": "2026-09-20",
+  "card_count": 20,
+  "cards": [
+    {
+      "id": "f001",
+      "module": "Listing",
+      "q": "亚马逊 Listing 标题字符上限是多少？",
+      "a": "★ 主标题 (Product Title)：≤ **75 字符**（含空格，2026-07-27 起硬性上限）\n★ 商品亮点 (Item Highlights)：额外 **125 字符**（逗号分隔的短语，不是整句）\n★ 二者合计 ≈ 200 字符 —— 信息总量没减少，只是从标题拆成两块\n\n【2026-07-27 新规要点（现行）】\n1. 除媒体类目（图书/音乐/影视）外，全品类标题 ≤ 75 字符\n2. 商品亮点仅在标题 < 75 字符时才展示，且可被搜索索引\n3. 标题里的词不重复超 2 次（介词、冠词、连词除外）\n4. 禁用字符：! $ ? _ { } ^ ¬ ¦（品牌名内部允许）\n5. 超长标题：品牌方有 14 天在「审核商品信息更改」页复核，之后 Amazon 逐步用 AI 推荐替换\n\n【撰写要点】\n- 75 字符内做取舍：品牌 + 核心产品名 + 最关键属性 + 最强差异点\n- 其余信息（材质/场景/人群/同义词）转移至商品亮点、五点、A+、Search Terms\n- 不堆砌、不放促销词、ASIN、价格、主观评价\n\n【小老板最爱问】「标题多少字？多出来的信息放哪？」—— 答「75 字符 + 商品亮点 125 字符」是加分项，答 200 就露馅。\n\n记忆锚点：标题 75 + 商品亮点 125 = 详情页 200。\n\n来源：Amazon Seller Central『Product title requirements and guidelines』GYTR6SYGFA5E3EQC + 2026-06-10 卖家公告（2026-07-27 生效），核实 2026-09。",
+      "sourceLabel": "📚 来源：Amazon SC · 标题规范（Product title requirements and guidelines）\n🌐 Amazon SC 文档 ID GYTR6SYGFA5E3EQC + 2026-06-10 公告（2026-07-27 生效）· 核实 2026-09",
+      "source": "amazon-sc-title",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f003",
+      "module": "Listing",
+      "q": "Bullet Point（五点）写多少字符？要点有哪些？",
+      "a": "★ 每条 **10–255 字符**（Amazon 官方硬性上限 255，不是 500；旧资料传错为 500）\n★ 至少 3 条，建议满 5 条\n★ 五条总字节 ≤ 1000 bytes 以确保完整索引\n\n【官方撰写规范】\n- 以大写字母开头（每个要点）\n- 句段形式、结尾不用标点\n- 多短语用分号分隔\n- 标题 + 冒号 + 描述（如『棉织物: 100% 纯棉』）\n- 数字 1–9 写文字（名称、型号、尺寸除外）\n- 数字与单位之间留空格（如『60 ml』）\n- 第一条放最大购买理由，后面加深信任\n\n【禁用内容（2026 仍适用）】\n- 特殊字符 ™ ® € … † ‡ ¢ £ ¥ © ± ~ â\n- 表情符号、占位文字（N/A、TBD）\n- 主观/比较声明（如『最受欢迎』『环保』『抗微生物』）\n- ASIN 代码、外部链接、保证类话术（『全额退款』）\n\n记忆锚点：255 字符/条，5 条满编，前置收益。\n\n来源：Amazon Seller Central『Product bullet point requirements』GX5L8BF8GLMML6CX，截至 2025-09。",
+      "sourceLabel": "📚 来源：Amazon SC · 五点规范（Bullet Point / Key Product Features limits）\n🌐 Amazon SC 文档 ID GX5L8BF8GLMML6CX · 核实 2026-09",
+      "source": "amazon-sc-title",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f009",
+      "module": "FBA",
+      "q": "FBA 尺寸分段（2026 版）？临界点是多少？",
+      "a": "★ 美国站 2026-01-15 起现行分段（只看**包装后**的尺寸/重量）：\n1. Small standard：≤16 oz（453 g），最长边 ≤15 in（38 cm），中边 ≤12 in，短边 ≤0.75 in\n2. Large standard：≤20 lb（9.07 kg），18 × 14 × 8 in\n3. **Small Bulky（2026 新增）**：≤50 lb，37 × 28 × 20 in，长+围 ≤130 in\n4. Large Bulky：≤50 lb（22.7 kg），59 × 33 × 33 in，长+围 ≤130 in\n5. Extra-Large：超出 Large Bulky 上限，再按 0-50 / 50-70 / 70-150 / 150+ lb 分 4 档\n\n【怎么判】计费按「运输重量 = 单件重量与体积重取大者」；只有 Small standard 与 Extra-Large 150+ lb 只看实际重量。任一维度超限即上跳一档。\n\n【重点】2026 新增 Small Bulky：包装稍微变大，就可能从 Large standard（3lb 约 $6.67）跳到 Small Bulky（约 $7.55 + $0.38/lb），每件长期多付钱 —— 发货前务必先测量。\n\n记忆锚点：标准件 2 档（Small/Large standard）+ 大件 3 档（Small/Large Bulky + Extra-Large），共 8 个分段。\n\n来源：Amazon Seller Central『Product size tiers』GG5KW835AHDJCH8W（2026-01-15 生效版），核实 2026-09。",
+      "sourceLabel": "📚 来源：Amazon SC · FBA 尺寸分段（Product size tiers，2026 版）\n🌐 Amazon SC 文档 ID GG5KW835AHDJCH8W · 核实 2026-09",
+      "source": "amazon-sc-fba-size",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f011",
+      "module": "Advert",
+      "q": "ACoS 计算公式？怎么理解？",
+      "a": "ACoS = 广告花费 / 广告订单销售额 × 100%\n例：花了 $30 投广告，广告带来 $100 销售额 → ACoS = 30%。\n\n【两个指标别混】\n· ACoS = 广告花费 / **广告**销售额（只看广告那部分）\n· TACoS = 广告花费 / **店铺总**销售额（看广告依赖度，越低说明自然流量越强）\n\n理解：不是越低越好。新品期可接受 50%-100%（冲曝光、攒评价），盈利期追求 < 25%。\n\n小老板最爱问「ACoS 多少算好」—— 别只报一个数，先问「哪个阶段」。\n\n来源：Amazon Ads Help『ACoS / TACoS / ROAS 定义』（GCRWVZWZWTURN6Y8），核实 2026-09。",
+      "sourceLabel": "📚 来源：Amazon Ads Help · ACoS（ACoS / TACoS / ROAS definitions）\n🌐 GCRWVZWZWTURN6Y8 · 核实 2026-09",
+      "source": "amazon-ads-acos",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f020",
+      "module": "Rules",
+      "q": "什么是 VINE 计划？需要付费吗？",
+      "a": "Vine 是 Amazon 官方测评计划；门槛：品牌备案 + FBA 在售 + 专业卖家，且 ASIN 评论数 < 30 条。\n\n【费用：按**父 ASIN** 分档（2026 价）】\n- 注册 1–2 件：**$0**\n- 注册 3–10 件：**$75**\n- 注册 11–30 件：**$200**\n★ 判定依据是「注册商品数量」，不是评论条数。\n★ 首条 Vine 评论发布后 **7 天**扣费；**90 天内没收到任何评论则不收费**。\n★ 评论者领走的样品库存不退回，样品成本要另算。\n\n【规则】评论者由 Amazon 挑选（Vine Voices），最多 30 条评价；卖家不能删评、不能指定内容、不能控分。\n【适合】客单价较高、评价空白的合规新品，用来快速破 0 评论。\n【不适合】产品/包装未打磨好的新款 —— 差评会被永久留在首页。\n\n记忆锚点：Vine 分档 **0 / 75 / 200**，按父 ASIN，首评后 7 天扣费。\n\n来源：Amazon Seller Central『Amazon Vine』费率页（2026 版），核实 2026-09。",
+      "sourceLabel": "📚 来源：Amazon SC · VINE 计划（Amazon Vine program，2026 费率页）\n🌐 Amazon SC 文档 ID G2J9ZJ2A24BX2SHX · 核实 2026-09",
+      "source": "amazon-sc-vine",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f029",
+      "module": "Report",
+      "q": "库存报告中 IPI 是什么？",
+      "a": "IPI = Inventory Performance Index（库存绩效指标），0–1000 分，**每周一更新**（滚动 90 天数据）。\n\n计算口径（4 因子，官方不公布权重）：\n1. 冗余库存率 Excess Inventory（目标 < 5%，权重最高）\n2. 售出率 FBA Sell-Through Rate（90 天售出 ÷ 平均在库）\n3. 滞留库存率 Stranded Inventory（目标 0%）\n4. 有货率 FBA In-Stock Rate（目标 > 90%）\n\n阈值：≥ 400 免限仓；< 400 触发容量限制 + 超额费（最高 $10/立方英尺/月）。建议运营目标 **550+** 留缓冲。\n\n【2026 变化】低于 400 从「季度评审」改为**近即时限制**；容量从 6 个月预测销量压缩到 **5 个月**；ASIN 级补货限制重启。\n【提升动作】清理超龄库存（> 271 天最贵）、修滞留 listing、把库存维持 45–60 天 DOI。\n\n记忆锚点：IPI 四因子 = 冗余、售出、滞留、有货；400 是红线。\n\n来源：Amazon Seller Central『Inventory Performance Index』+ 2026 库存容量政策更新，核实 2026-09。",
+      "sourceLabel": "📚 来源：Amazon SC · 库存绩效 IPI（Inventory Performance Index）\n🌐 sellercentral.amazon.com > Inventory > Inventory Planning · 核实 2026-09",
+      "source": "inventory",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f039",
+      "module": "Select",
+      "q": "新手卖家最容易踩的 3 个选品大坑？",
+      "a": "1. **客单价太低（< $15）**：FBA 有最低佣金 **$0.30/件** + 固定配送费，低货值很难覆盖广告与各项费用。\n2. **体积/重量超标**：美国站「标准尺寸」上限 = 最长边 **18 英寸（45.7 cm）**、中边 14 英寸、最短边 8 英寸、重量 **20 lb（约 9.07 kg）**；超出即跌入 Small / Large Bulky，配送费与仓储费明显跳升。\n3. **侵权品类**（卡通形象、明星代言、专利外观）：Listing 下架 + 账户风险。\n\n记忆：低货值 + 大体积 + 侵权 = 死路。\n\n来源：Amazon SC『Product size tiers』（G5KW835AHDJCH8W）+『Referral fees』，核实 2026-09。",
+      "sourceLabel": "📚 来源：Amazon SC · FBA 尺寸分段与佣金（Product size tiers / Referral fees）\n🌐 G5KW835AHDJCH8W · 核实 2026-09",
+      "source": "amazon-sc-fba-fee",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f087",
+      "module": "Listing",
+      "q": "主标题字符硬上限？超出会怎样？",
+      "a": "≤ **75 字符**（含空格、标点、数字、汉字），2026-07-27 起全品类（媒体类除外）硬性上限。\n超出会怎样：不是简单截断 —— 品牌方有 14 天在「审核商品信息更改」页复核，之后 Amazon 逐步用 AI 推荐标题替换。\n关键词务必放在前 75 字符内，多出的卖点挪到商品亮点（125 字符）。",
+      "sourceLabel": "📚 来源：Amazon SC · 标题规范（2026-07-27 生效）\n🌐 Amazon SC 文档 ID GYTR6SYGFA5E3EQC · 核实 2026-09",
+      "source": "amazon-sc-title",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f088",
+      "module": "Listing",
+      "q": "商品亮点 Item Highlights 和五点 Bullet 各自上限？",
+      "a": "⚠️ **别把两者混了（面试高频扣分点）**：\n\n**商品亮点 Item Highlights**\n- 只有 1 条，**≤ 125 字符**\n- 逗号分隔的短语（材质、用途），不是整句\n- 展示在标题下方，可被搜索索引（2026-07-27 起新增字段）\n- **仅当标题 < 75 字符时才显示**\n\n**五点描述 Bullet Points**\n- **5 条**，每条 **10–255 字符**\n- 只有前 1000 字节被搜索索引\n- 以大写字母开头，标题 + 冒号 + 描述，句末不用标点\n\n记忆：**125 是「商品亮点」，255 才是「五点」**。",
+      "sourceLabel": "📚 来源：Amazon SC · 商品亮点 + 五点规范（2026-07-27 生效）\n🌐 GX5L8BF8GLMML6CX / GYTR6SYGFA5E3EQC · 核实 2026-09",
+      "source": "amazon-sc-bullet",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f089",
+      "module": "Listing",
+      "q": "2026-07 标题新规记住哪几条？",
+      "a": "① 标题 ≤ 75 字符（全品类，媒体类除外）\n② 新增「商品亮点」125 字符，标题 < 75 字符才显示\n③ 同词不超 2 次（介/冠/连词除外）\n④ 禁用字符：$ ? _ { } ^ ¬ ¦ !\n⑤ 超长有 14 天复核期，之后 AI 自动替换\n⑥ 实词首字母大写，数字用阿拉伯数字",
+      "sourceLabel": "📚 来源：Amazon SC · 标题规范（2026-07-27 生效）\n🌐 Amazon SC 文档 ID GYTR6SYGFA5E3EQC · 核实 2026-09",
+      "source": "amazon-sc-title",
+      "verifiedAt": "2026-09",
+      "volatile": false,
+      "reviewDueAt": "2028-03-15"
+    },
+    {
+      "id": "f095",
+      "module": "FBA",
+      "q": "FBA 尺寸分段（只看包装后）的临界点？",
+      "a": "2026 版（只看包装后的尺寸 / 重量）：\n· Small standard（小号标准件）— ≤16 oz（453 g）/ 15 × 12 × 0.75 in\n· Large standard（大号标准件）— ≤20 lb（9.07 kg）/ 18 × 14 × 8 in\n· Small Bulky（小号大件，2026 新增）— ≤50 lb / 37 × 28 × 20 in\n· Large Bulky（大号大件）— ≤50 lb / 59 × 33 × 33 in\n· 再大 = Extra-Large（超大件，分 4 档）",
+      "sourceLabel": "📚 来源：Amazon SC · FBA 尺寸分段（2026 版）\n🌐 Amazon SC 文档 ID GG5KW835AHDJCH8W · 核实 2026-09",
+      "source": "amazon-sc-fba-size",
+      "verifiedAt": "2026-09",
+      "volatile": false,
+      "reviewDueAt": "2028-03-15"
+    },
+    {
+      "id": "f096",
+      "module": "FBA",
+      "q": "FBA 仓储费 + 超龄库存附加费怎么记？",
+      "a": "① 月仓储费：按体积（立方英尺）× 费率，10–12 月旺季约为淡季 2–3 倍。\n② 超龄库存附加费（2026-01-16 起，每月 15 日快照、18–22 日收）：\n181-210 $0.50 / 211-240 $1.00 / 241-270 $1.50 / 271-300 $5.45 /\n301-330 $5.70 / 331-365 $5.90 / 366-455 $6.90 或 $0.30/件 / 456+ $7.90 或 $0.35/件\n（按体积费与按件费**取高者**）\n③ 关键：第 **271 天**费率从 $1.50 跳到 $5.45，是「悬崖点」。\n④ 2026 新增**低库存水平费**（库存太少也收费）—— 两头夹击，甜点是 30–60 天 DOI。",
+      "sourceLabel": "📚 来源：Amazon SC · FBA 费用\n🌐 Amazon 官方帮助域 · 核实 2026-09",
+      "source": "amazon-sc-fba-fee",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f098",
+      "module": "FBA",
+      "q": "FBA 贴标（Labeling）2026 怎么处理？费用多少？",
+      "a": "★ **美国站自 2026-01-01 起，FBA 不再提供预处理与商品贴标服务**（prep & item labeling 全部终止）。\n\n【分界线】\n· 2026-01-01 **之前**创建的货件：仍可按原费率贴标 —— 标准尺寸 **$0.55/件**\n· 2026-01-01 **之后**创建的货件：必须**自己贴标**或找**第三方 FBA Prep 服务商**；未做合格预处理的货件若残损/无法追踪，**不予赔偿**\n\n【选项变了】过去是「Amazon 贴标 vs 卖家贴标 vs 混合」三选一 —— 现在只剩两条路：卖家自贴 / 第三方代贴。\n\n【省钱方向】申请 **SIPP（Ships in Product Packaging）**：减少预处理需求，还能拿 FBA 折扣。\n【欧洲站 / 加拿大站】2026-07-01 起同样终止。\n\n来源：Amazon SC『FBA Prep Service』（G201023020，2026-01-01 生效），核实 2026-09。",
+      "sourceLabel": "📚 来源：Amazon SC · FBA Prep Service（G201023020）\n🌐 2026-01-01 起美国站停止贴标/预处理 · 核实 2026-09",
+      "source": "amazon-sc-fba-create",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f108",
+      "module": "Select",
+      "q": "新品毛利率扣后最少剩多少才划算？",
+      "a": "公式：单价 - 产品成本 - 头程 - FBA 配送费 - 佣金 - 退货损耗。\n· 佣金：美国站多数类目 **15%**（最低 $0.30/件）\n· 退货损耗：按 **3%-5%** 估（经验值，按类目实际退货率调整）\n\n剩 25%-30% 能干；< 15% 不干；> 35% 润。\n\n来源：Amazon SC『Referral fees』（2026）+ 成本核算实务，核实 2026-09。",
+      "sourceLabel": "📚 来源：Amazon SC · Referral fees（2026）+ 成本核算实务\n🌐 sellercentral.amazon.com > 佣金费率 · 核实 2026-09",
+      "source": "common-select",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f120",
+      "module": "Rules",
+      "q": "超龄库存附加费（Aged Inventory Surcharge）2026 分几档？",
+      "a": "美国站 2026-01-16 起共 **8 档**（单位 $/立方英尺，按体积费与按件费**取高者**）：\n181–210 天 **$0.50**\n211–240 天 **$1.00**\n241–270 天 **$1.50**\n271–300 天 **$5.45**\n301–330 天 **$5.70**\n331–365 天 **$5.90**\n366–455 天 **$6.90** 或 $0.30/件\n456 天以上 **$7.90** 或 $0.35/件\n\n【要点】\n- 每月 15 日取库存快照，18–22 日收费，**按月收**（不是按季）\n- 与月度仓储费**叠加**收取\n- 服装 / 鞋靴 / 箱包 / 珠宝 / 钟表部分档位豁免\n- 第 **271 天**是「悬崖」：$1.50 → $5.45，约 3.6 倍\n- 清库方式：Amazon Outlet（最低 20% off）或当月 14 日前提交移除单\n\n来源：Amazon Seller Central『Aged inventory surcharge』GJQNPA23YWVA4SBD（2026-01-16 生效版），核实 2026-09。",
+      "sourceLabel": "📚 来源：Amazon SC · 超龄库存附加费（Aged inventory surcharge）\n🌐 Amazon SC 文档 ID GJQNPA23YWVA4SBD · 核实 2026-09",
+      "source": "amazon-sc-aged-inventory",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f132",
+      "module": "Rules",
+      "q": "低库存水平费（Low-Inventory-Level Fee）是什么？2026 有什么变化？",
+      "a": "库存**太少**也要收费 —— 与超龄库存附加费形成「两头夹击」。\n\n【触发条件】30 天与 90 天的历史可售天数**同时**低于 28 天（只看一边不算）。\n\n【费率】（2026-01-15 起，按件收，叠加在配送费上）\n· Small standard ≤16 oz：$0.89 / $0.63 / $0.32（<14 天 / 14–21 天 / 21–28 天）\n· Large standard ≤3 lb：$0.97 / $0.70 / $0.36\n· Large standard 3–20 lb：$1.11 / $0.87 / $0.47\n· Small Bulky：$1.85 / $1.02 / $0.51\n· Large Bulky：$2.09 / $1.15 / $0.57\n\n【2026 变化】改按**卖家 FNSKU** 计算（原按父 ASIN）；新适用于 Small / Large Bulky；Grocery 豁免。\n【豁免】新专业卖家 365 天；新品父 ASIN 180 天（需加入 FBA 新选品计划）；7 天销量 < 20 件；≥70% 由 AWD 自动补货。\n【运营甜点】库存维持 **30–60 天 DOI**：既不欠货（LIL），也不超龄（AIS）。\n\n来源：Amazon Seller Central『Low-inventory-level fee』GV43F6S76Y9DHYRH（2026-01-15 生效版），核实 2026-09。",
+      "sourceLabel": "📚 来源：Amazon SC · 低库存水平费（Low-inventory-level fee）\n🌐 Amazon SC 文档 ID GV43F6S76Y9DHYRH · 核实 2026-09",
+      "source": "amazon-sc-lil",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f133",
+      "module": "FBA",
+      "q": "入库配置服务费（Inbound Placement Fee）怎么省？",
+      "a": "把货拆到多个亚马逊仓库 → 免服务费；只发一两个仓 → 按件收费。\n\n【2026 费率】（2026-01-15 起，最小拆分方案）\n· Small standard ≤8 oz：$0.14–0.32/件\n· Small standard 8–16 oz：$0.16–0.32/件\n（发往西部仓库通常更贵）\n\n【免收条件】货件含**至少 5 个完全相同的纸箱或托盘**（每箱数量、混装一致）时，可选「Amazon 优化拆分」，多仓分发免服务费。\n【决策】一次 500 件的 Small standard 货件，两种方案差额约 $70–160 —— 在头程运费与拆箱人工之间取舍。\n\n来源：Amazon Seller Central『FBA inbound placement service fee』（2026-01-15 生效版），核实 2026-09。",
+      "sourceLabel": "📚 来源：Amazon SC · 入库配置服务费（FBA inbound placement service fee）\n🌐 sellercentral.amazon.com > FBA inbound placement · 核实 2026-09",
+      "source": "amazon-sc-inbound",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f136",
+      "module": "FBA",
+      "q": "2026 年 FBA 配送费涨了吗？几项费用怎么叠加？",
+      "a": "涨了。2026-01 起标准件配送费平均上调 **$0.04–0.08/件**（按重量档）。\n\n【2026 费率参考（非服装）】\n· Small standard：2 oz 以下 $3.06 → 12–16 oz $3.63\n· Large standard：4 oz 以下 $3.68 → 1–1.5 lb $4.85 → 3 lb 以上 $6.05 + $0.38/半磅\n· Large Bulky：$9.61 + $0.38/lb（首磅后）\n· Extra-Large 0–50 lb：$26.33 + $0.38/lb\n\n【叠加关系】配送费 + 低库存水平费（最多 $2.09）+ 超龄库存附加费 + 入库配置费 → 全都要算进毛利。\n提示：售价 < $10 的商品有「低价 FBA」减免（每件约低 $0.77–1.32）。\n\n来源：2026 US FBA fulfillment fee 表（Amazon Seller Central），核实 2026-09。",
+      "sourceLabel": "📚 来源：Amazon SC · FBA 配送费（2026 fulfillment fees）\n🌐 sellercentral.amazon.com · 核实 2026-09",
+      "source": "amazon-sc-fba-fee",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f138",
+      "module": "Promo",
+      "q": "2026 旺季促销提报时间节点？（面试/实操都要知道）",
+      "a": "【2026 Prime 会员大促（Prime Big Deal Days）】\n· 提报窗口：美国站 **7/8 – 9/8**；加拿大 7/8–9/29；欧洲 7/6–9/23\n· 早鸟优惠截止：**8/5 前**（省 $50 预付）\n· Prime 专享价格折扣提报开放：美加 **7/20**\n\n【2026 黑五网一】\n· 提报窗口：美国站 **7/8 – 10/20**；加拿大 7/8–11/13；欧洲 7/6–11/18\n· 早鸟优惠截止：**9/5 前**\n· Prime 专享价格折扣提报开放：美加 **8/17**\n\n【2026 旺季配送费（Peak Fulfillment Fee）】\n· **10/15 – 次年 1/14**，FBA / 远程配送 / MCF / Buy with Prime 全部适用\n· 平均每件上调 **$0.32**，另加 **3.5%** 燃油与物流附加费\n\n【助理价值】旺季是「提报窗口早于活动日期」的 —— 错过窗口等于错过整个 Prime Day。老板问「什么时候备货」时，能说出「提报 7 月开、8/5 早鸟截止、10/15 起旺季配送费」是强加分。\n\n来源：Amazon 全球开店 2026 大促提报公告 + Amazon Q4 卖家指南（数据核对日 2026-09），核实 2026-09。",
+      "sourceLabel": "📚 来源：Amazon 全球开店 · 2026 大促提报与费用公告\n🌐 gs.amazon.com + 2026 假日季促销公告 · 核实 2026-09",
+      "source": "amazon-sc-deal",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    },
+    {
+      "id": "f141",
+      "module": "Promo",
+      "q": "2026 大促促销资格的价格规则是什么？（30 天 / 60 天双回溯）",
+      "a": "2026 Prime 大促的 Prime 专享价格折扣与各类促销，必须同时满足：\n\n【美国站 / 加拿大站】\n1. 定价 **等于或低于最近 60 天的最低销售价格**（含历史促销价、券后价、价格折扣）\n2. 在最近 **30 天最低销售价**基础上，**至少再提供 5% 折扣**\n\n【欧洲站（英/德/法/意/西）】\n· 在最近 30 天最低销售价基础上，至少提供 **5% 折扣**\n\n【关键细节（面试加分）】\n- 30 天 / 60 天是**双回溯**，不能靠活动前临时抬价「做高」划线价\n- Prime 会员大促的促销价**不计入** 30 天与 60 天回溯期 → 不会污染黑五网一的最高促销价要求\n- 想降价前先看后台 **Max Price** 提示；不达标时系统会直接标出最高可售价格\n\n记忆：**60 天定价上限 + 30 天再降 5%**。\n\n来源：Amazon Seller Central『促销活动 / 价格折扣与活动』+ 2026 大促资格公告，核实 2026-09。",
+      "sourceLabel": "📚 来源：Amazon SC · 促销资格与价格规则（2026 大促公告）\n🌐 sellercentral.amazon.com > 价格折扣与活动 · 核实 2026-09",
+      "source": "amazon-sc-deal",
+      "verifiedAt": "2026-09",
+      "volatile": true,
+      "reviewDueAt": "2027-03-15"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "_readme": [
+    "复制本文件为 skill.config.json 后按需修改。",
+    "所有项都是可选的 —— 不配置时脚本会使用技能目录内的兜底路径。",
+    "路径分隔符可用正斜杠 /，脚本会自动转换。"
+  ],
+
+  "project_root": "",
+  "_project_root_说明": "项目产出物的根目录。留空则用 <技能目录>/projects。也可用环境变量 AMAZON_OPS_ROOT 覆盖。",
+
+  "coach_dir": "",
+  "_coach_dir_说明": "amazon-coach 的 data 目录（含 flashcards.json）。本项目要求集成该知识库作为费率与规范口径来源。留空则回退到技能自带的离线卡片集 data/。也可用环境变量 AMAZON_COACH_DIR 覆盖。示例：C:/path/to/amazon-coach/data",
+
+  "market": "US",
+  "_market_说明": "默认分析站点。US / UK / DE / JP",
+
+  "currency": "USD",
+  "_currency_说明": "默认币种。抓取时会强制该币种，避免按访问来源地自动本地化（曾因此把 CNY 当成 USD）。"
+}

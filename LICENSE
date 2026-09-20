@@ -1,0 +1,50 @@
+MIT License
+
+Copyright (c) 2026 卢鹏 (Lu Peng)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## 附加说明（非许可条款，仅作澄清）
+
+**1. 关于第三方商标**
+
+本项目中出现的 "Amazon"、"Amazon Seller Central"、"FBA"、"Sponsored Products"、
+"Brand Analytics" 等名称与标识，均为 Amazon.com, Inc. 或其关联公司的商标或注册商标。
+本项目**与 Amazon 无任何隶属、合作或背书关系**。
+
+**2. 关于官方规范的引用**
+
+本项目在文档中引用了 Amazon 官方公开的费率、字符限制、政策口径等信息。
+这些属于**事实性信息**，项目以**转述**方式呈现，并注明来源文档标识与核实日期。
+本项目的表述**不代表 Amazon 官方立场**，也不构成官方文件。
+
+**3. 关于内置卡片集（`data/min-cards.json`）**
+
+该文件中的知识卡片来源于使用者自建的 `amazon-coach` 学习资料，
+其内容为对公开资料的整理与转述。若你需要使用完整版知识库，
+请自行配置外部 `coach_dir`（详见 `README.md`）。
+
+**4. 免责声明**
+
+本项目为**分析与流程工具**，产出的一切结论仅供参考。
+- 不构成投资、经营、法律或税务建议
+- 费率与政策可能随时变动，**使用前请以 Amazon 官方页面为准**
+- 使用者需自行承担依据本项目产出所作决策的后果
