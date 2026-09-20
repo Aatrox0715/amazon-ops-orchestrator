@@ -126,11 +126,17 @@ P1 可自动推进（我会标注哪些是我替你做的决定），但 **P0（
 A：会**显式标注为 L3**（缺什么、为什么缺、用什么降级方案），不会用估算值填。
 
 **Q：能一次分析多个 ASIN 吗？**
-A：暂不支持批量，需逐个跑。（已在 `ROADMAP.md` 的 P2-9 列出）
+A：暂不支持批量，需逐个跑。（已在 `docs/roadmap.md` 的 P2-9 列出）
 
 **Q：能换到别的 agent 上用吗？**
 A：可以。本技能遵循通用 Agent Skill 结构（`SKILL.md` + `scripts/` + `references/`），
-可直接复制到其他 agent 的 skills 目录。详见 `EXPORT.md`。
+可直接复制到其他 agent 的 skills 目录，**零配置即可运行**。
+详见 `docs/exporting.md`。
+
+**Q：需要先装 amazon-coach 才能用吗？**
+A：不需要。自带 `data/min-cards.json`（20 张必需卡）可开箱跑通；
+配置外部知识库后自动切换到完整版（141 张卡 + 时效管理）。
+用 `python scripts/state.py roots` 可查看当前生效的是哪一个。
 
 **Q：能自己改吗？**
 A：可以。环节定义在 `stages/`、规则在 `references/`、脚本在 `scripts/`，都是纯文本。

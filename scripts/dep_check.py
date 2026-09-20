@@ -24,11 +24,11 @@ from datetime import datetime, timezone, timedelta
 
 # ── 统一配置（三级回退，替代硬编码路径）──
 try:
-    from _config import project_root, coach_dir, SKILL_ROOT
+    from _config import project_root, coach_dir, coach_mode, SKILL_ROOT
 except ImportError:
     import sys as _sys, os as _os
     _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
-    from _config import project_root, coach_dir, SKILL_ROOT
+    from _config import project_root, coach_dir, coach_mode, SKILL_ROOT
 
 
 if hasattr(sys.stdout, "reconfigure"):
@@ -77,18 +77,36 @@ def main():
     ap.add_argument("--warn-days", type=int, default=30)
     args = ap.parse_args()
 
+    mode, mode_path, mode_msg = coach_mode(args.coach_dir)
+
     print("=" * 78)
     print("外部依赖时效检查")
     print("=" * 78)
-    print(f"依赖源：{args.coach_dir}")
+    print(f"依赖源  ：{args.coach_dir}")
+    print(f"模式    ：{mode} —— {mode_msg}")
+    if mode == "内置":
+        print("          （未配置外部 amazon-coach，使用技能自带卡片集；")
+        print("            时效字段来自打包时的快照，不反映上游最新复核状态）")
 
-    fp = os.path.join(args.coach_dir, "flashcards.json")
-    if not os.path.isfile(fp):
-        print(f"\n❌ 找不到 flashcards.json —— 外部依赖不可用")
-        print("   → 本技能的费率与规范口径全部依赖它，请先确认路径")
+    # 外部用 flashcards.json；离线兜底用 min-cards.json
+    fp = None
+    for name in ("flashcards.json", "min-cards.json"):
+        cand = os.path.join(args.coach_dir, name)
+        if os.path.isfile(cand):
+            fp = cand
+            break
+
+    if not fp:
+        print(f"\n❌ 依赖源内既无 flashcards.json 也无 min-cards.json")
+        print("   → 请指定正确路径：--coach-dir <amazon-coach/data>")
+        print("   → 或检查技能自带的 data/ 是否被删除")
         return 1
 
-    cards = json.load(open(fp, encoding="utf-8"))["cards"]
+    print(f"卡片文件：{os.path.basename(fp)}")
+    print()
+
+    payload = json.load(open(fp, encoding="utf-8"))
+    cards = payload["cards"] if isinstance(payload, dict) else payload
     idx = {c["id"]: c for c in cards}
     now = datetime.now(TZ)
 

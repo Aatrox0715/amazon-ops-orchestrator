@@ -1,13 +1,14 @@
 ---
 name: amazon-ops-orchestrator
-version: 0.4.0
+version: 0.5.0
+license: MIT
 description: 亚马逊运营全流程总控台。当用户提出任何亚马逊运营任务时优先加载——包括市场调研、品类选品、竞品拆解、评论与 VOC 分析、关键词库搭建、定价与利润测算、Listing 标题/五点/描述编写、A+ 与视觉素材规划、Listing 合规体检、广告架构规划、广告与评论复盘、迭代优化。也适用于"我该从哪开始""帮我看看这个 ASIN""这个词库怎么搭""listing 怎么写""这周的广告怎么调"这类只说了目标、没说步骤的请求。触发词：亚马逊、Amazon、ASIN、listing、选品、竞品、关键词、词库、ACoS、TACoS、BSR、FBA、上架、主图、五点、A+、review、运营流程、电商运营。
 agent_created: true
 ---
 
 # 亚马逊运营总控台
 
-> **版本 0.4.0** ｜ 变更历史见 `CHANGELOG.md` ｜ 成熟度与改进路线见 `docs/roadmap.md`
+> **版本 0.5.0** ｜ 变更历史见 `CHANGELOG.md` ｜ 成熟度与改进路线见 `docs/roadmap.md`
 
 ## 首次使用先读
 
@@ -33,11 +34,22 @@ agent_created: true
 
 **第 1 步 · 找项目**
 
-检查 `E:\workbudyy\amazon-ops\projects\` 下有哪些项目目录。
+先解析**项目根目录**，再列出其下的项目目录。解析顺序（先命中者胜）：
+
+1. `skill.config.json` 中的 `project_root`
+2. 环境变量 `AMAZON_OPS_ROOT`
+3. 技能目录下的 `projects/`（兜底，开箱即用）
+
+```bash
+python scripts/state.py roots     # 打印当前生效的路径与来源，排查配置问题时先跑这个
+```
 
 - **有活跃项目** → 读该项目 `_state.json`，恢复上下文：走到哪一环了、哪些决策已确认、当前数据源级别
 - **无项目** → 问用户："这是新项目吗？给个产品代号。"然后 `python scripts/state.py new <代号>`
 - **不确定做哪个** → 列出所有项目及各自进度，让用户选
+
+> **不要向用户复述绝对路径**，也不要把路径硬编码进任何指令——
+> 换机器、换操作系统都会失效。所有路径一律通过上述解析获取。
 
 **第 2 步 · 定意图**
 
@@ -218,10 +230,13 @@ projects/                    ← 项目产出物（.gitignore 已忽略）
 
 ## 脚本用法速查
 
+脚本位于**技能目录**的 `scripts/` 下。先进入该目录（路径按上文「找项目」的解析顺序取得），再执行：
+
 ```bash
-cd C:\Users\10306\.workbuddy\skills\amazon-ops-orchestrator\scripts
+cd <技能目录>/scripts
 
 # 项目状态
+python state.py roots                        # 打印生效路径
 python state.py new <代号> --name "产品名"
 python state.py show <代号>
 python state.py stage <代号> <环节号> <状态> --output <路径>
@@ -246,13 +261,24 @@ python make_xlsx.py <输出路径> --data <数据json>
 
 ## 外部资产引用
 
-| 资产 | 路径 | 在流程里的角色 |
+外部知识库（amazon-coach）是本技能的**首选事实来源**，但**不是运行前提**——
+未配置时自动降级到技能自带的离线卡片集，功能不中断。
+
+| 资产 | 来源 | 在流程里的角色 |
 |---|---|---|
-| FBA Coach 知识库 | `C:\Users\10306\WorkBuddy\2026-09-06-17-10-09\amazon-coach\` | 事实底座 + 落地动作清单 |
+| **完整知识库**<br>（配置后启用） | `skill.config.json` 的 `coach_dir`<br>或环境变量 `AMAZON_COACH_DIR` | 事实底座 + 落地动作清单 |
 | ├ `data/flashcards.json` | 141 张卡，含 sourceLabel / verifiedAt | **事实与口径的权威来源**，引用前查时效 |
 | ├ `data/sop.json` | 8 套后台操作 SOP | **执行落地**：决策做完后告诉用户怎么在后台操作 |
 | ├ `data/map.json` | M1–M7 知识地图 | 流程与知识模块的对照参照 |
 | └ `data/bank.json` | 34 道面试题 | 方法论解释（解释"为什么这么干"时可用） |
+| **离线兜底**<br>（零配置可用） | 技能自带 `data/min-cards.json` | 20 张必需卡，覆盖全流程硬依赖；无外部依赖即可跑通 |
+
+```bash
+python scripts/dep_check.py      # 检查引用卡是否过期（会同时报告当前生效的知识库来源）
+```
+
+**降级规则**：`coach_dir` 不可达时，不要报错中断，改用 `data/min-cards.json`，
+**并在交付物里注明「本次依据为离线兜底卡片集，非完整知识库」**。
 
 ⚠️ **注意 SOP 的真实定位**：`sop.json` 是**后台操作路径**（点哪里、填什么、怎么验证），不是分析决策方法。分析框架需按 `stages/` 里的定义执行，SOP 只在流程末尾作为"落地动作清单"引用。
 

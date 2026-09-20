@@ -4,6 +4,7 @@
 amazon-ops-orchestrator 状态管理 CLI
 
 用法：
+  python state.py roots
   python state.py new <代号> [--name 产品名] [--market US]
   python state.py list
   python state.py show <代号>
@@ -22,11 +23,13 @@ from datetime import datetime, timezone, timedelta
 
 # ── 统一配置（三级回退，替代硬编码路径）──
 try:
-    from _config import project_root, coach_dir, SKILL_ROOT
+    from _config import (project_root, coach_dir, SKILL_ROOT,
+                         coach_mode, load_config, CONFIG_PATH)
 except ImportError:
     import sys as _sys, os as _os
     _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
-    from _config import project_root, coach_dir, SKILL_ROOT
+    from _config import (project_root, coach_dir, SKILL_ROOT,
+                         coach_mode, load_config, CONFIG_PATH)
 
 
 if hasattr(sys.stdout, "reconfigure"):
@@ -210,6 +213,54 @@ def cmd_missing(args):
     print(f"L3 缺失字段现有 {len(st['missing_fields'])} 项")
 
 
+def cmd_roots(args):
+    """打印所有生效路径及其**解析来源** —— 排查「配置没生效」类问题的第一入口"""
+    cfg = load_config()
+    has_cfg_file = os.path.isfile(CONFIG_PATH)
+
+    # 逐层判定来源
+    env_root = os.environ.get("AMAZON_OPS_ROOT")
+    if env_root:
+        src_root = "环境变量 AMAZON_OPS_ROOT"
+    elif cfg.get("project_root"):
+        src_root = "skill.config.json → project_root"
+    else:
+        src_root = "兜底：技能目录内 projects/"
+
+    mode, coach_path, coach_msg = coach_mode()
+    env_coach = os.environ.get("AMAZON_COACH_DIR")
+    if env_coach:
+        src_coach = "环境变量 AMAZON_COACH_DIR"
+    elif cfg.get("coach_dir"):
+        src_coach = "skill.config.json → coach_dir"
+    else:
+        src_coach = "兜底：技能自带 data/"
+
+    root = project_root()
+    print("路径解析结果")
+    print("─" * 70)
+    print(f"  技能根目录   {SKILL_ROOT}")
+    print()
+    print(f"  项目根目录   {root}")
+    print(f"    来源       {src_root}")
+    exists = os.path.isdir(root)
+    print(f"    状态       {'存在' if exists else '不存在（首次运行会自动创建）'}")
+    if exists:
+        subs = sorted(d for d in os.listdir(root)
+                      if os.path.isdir(os.path.join(root, d)))
+        print(f"    项目数     {len(subs)}" + (f"  → {', '.join(subs[:8])}" if subs else "  （尚无项目）"))
+    print()
+    print(f"  知识库       {coach_path}")
+    print(f"    来源       {src_coach}")
+    print(f"    模式       {mode} —— {coach_msg}")
+    print()
+    print(f"  配置文件     {CONFIG_PATH}")
+    print(f"               {'已创建' if has_cfg_file else '未创建（可复制 skill.config.example.json）'}")
+    print()
+    print("提示：若「来源」不是你以为的那层，说明更高优先级的层在生效，")
+    print("      或被 skill.config.json 覆盖 —— 按上面的顺序逐层排查。")
+
+
 def need_code(args):
     if not args:
         die("缺少项目代号")
@@ -225,6 +276,7 @@ def opt(args, flag, default):
 
 
 COMMANDS = {
+    "roots": cmd_roots,
     "new": cmd_new, "list": cmd_list, "show": cmd_show,
     "stage": cmd_stage, "confirm": cmd_confirm,
     "level": cmd_level, "missing": cmd_missing,

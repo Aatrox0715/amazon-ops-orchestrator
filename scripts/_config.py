@@ -4,8 +4,8 @@
 统一配置解析（三级回退）
 
 解决的问题：
-  原脚本把路径写死（`E:\\workbudyy\\...` / `C:\\Users\\10306\\...`），
-  换一台机器就会失效。本模块提供与运行环境无关的路径解析。
+  原脚本把路径写死（项目根目录与知识库目录都是硬编码的绝对路径），
+  换一台机器、换一个操作系统就会失效。本模块提供与运行环境无关的路径解析。
 
 路径解析优先级：
   1. 命令行参数
@@ -85,27 +85,32 @@ def coach_dir(cli=None):
     return os.path.join(SKILL_ROOT, "data")
 
 
-def coach_mode():
+def coach_mode(cli=None):
     """
-    返回 ('外部' | '内置', 路径, 说明)
+    返回 ('外部' | '内置' | '缺失', 路径, 说明)
+
     外部：指向真实的 amazon-coach（141 张卡 + 时效管理）
     内置：技能自带的离线最小卡片集（20 张必需卡）
+
+    注意：判定依据是**实际用的目录里有什么文件**，不是「配了没配」。
+    传了 cli（--coach-dir）时以 cli 为准 —— 否则会出现
+    「命令行指定了离线目录，却报告成外部完整知识库」的错误陈述。
     """
-    cfg_path = None
-    if load_config().get("coach_dir"):
-        cfg_path = os.path.abspath(os.path.expanduser(load_config()["coach_dir"]))
+    # 明确指定即以此为准
+    if cli:
+        path = os.path.abspath(cli)
     elif os.environ.get("AMAZON_COACH_DIR"):
-        cfg_path = os.path.abspath(os.environ["AMAZON_COACH_DIR"])
+        path = os.path.abspath(os.environ["AMAZON_COACH_DIR"])
+    elif load_config().get("coach_dir"):
+        path = os.path.abspath(os.path.expanduser(load_config()["coach_dir"]))
+    else:
+        path = os.path.join(SKILL_ROOT, "data")
 
-    if cfg_path and os.path.isfile(os.path.join(cfg_path, "flashcards.json")):
-        return "外部", cfg_path, "已集成外部 amazon-coach（完整知识库）"
-
-    builtin = os.path.join(SKILL_ROOT, "data")
-    if os.path.isfile(os.path.join(builtin, "flashcards.json")):
-        return "内置", builtin, "使用技能自带的离线卡片集"
-    if os.path.isfile(os.path.join(builtin, "min-cards.json")):
-        return "内置", builtin, "使用技能自带的离线最小卡片集"
-    return "缺失", builtin, "找不到任何卡片数据源"
+    if os.path.isfile(os.path.join(path, "flashcards.json")):
+        return "外部", path, "已集成外部 amazon-coach（完整知识库）"
+    if os.path.isfile(os.path.join(path, "min-cards.json")):
+        return "内置", path, "使用技能自带的离线最小卡片集"
+    return "缺失", path, "该目录下既无 flashcards.json 也无 min-cards.json"
 
 
 def require_coach(strict=False):

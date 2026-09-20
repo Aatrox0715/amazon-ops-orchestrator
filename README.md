@@ -3,7 +3,7 @@
 > 亚马逊运营全流程分析技能 —— 一套给 AI agent 用的十环工作流
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.4.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.5.0-blue.svg)](CHANGELOG.md)
 
 ---
 
